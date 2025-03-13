@@ -2,13 +2,13 @@
 {
     'name': "Real Estate Advertisement module",
 
-    'summary': "Short (1 phrase/line) summary of the module's purpose",
+    'summary': "Manage and display real estate advertisements, with features such as offers and property details.",
 
     'description': """
 Manage and display real estate advertisements, with features such as offers and property details.""",
 
     'author': "FRecaldeDev",
-    'website': "https://www.yourcompany.com",
+    'website': "https://www.odoo.com/page/crm",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -17,11 +17,11 @@ Manage and display real estate advertisements, with features such as offers and 
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','crm'],
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
     ],
@@ -29,5 +29,8 @@ Manage and display real estate advertisements, with features such as offers and 
     'demo': [
         'demo/demo.xml',
     ],
+    'installable': True,
+    'application': True,
+    
 }
 

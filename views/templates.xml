@@ -1,24 +1,58 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
-        </template>
--->
+          <record id="view_property_form" model="ir.ui.view">
+            <field name="name">estate.property.form</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <form string="Real Estate Property">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                            <field name="postcode"/>
+                            <field name="date_availability"/>
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                            <field name="bedrooms"/>
+                            <field name="living_area"/>
+                            <field name="facades"/>
+                            <field name="garage"/>
+                            <field name="garden"/>
+                            <field name="garden_area"/>
+                            <field name="garden_orientation"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+          </record>
+
+
+      <record id="view_property_tree" model="ir.ui.view">
+            <field name="name">estate.property.tree</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <tree string="Properties">
+                    <field name="name"/>
+                    <field name="expected_price"/>
+                    <field name="selling_price"/>
+                    <field name="bedrooms"/>
+                    <field name="living_area"/>
+                    <field name="facades"/>
+                    <field name="garden"/>
+                    <field name="garden_area"/>
+                </tree>
+            </field>
+      </record>
+
+
+        <record id="action_property" model="ir.actions.act_window">
+            <field name="name">Properties</field>
+            <field name="res_model">estate.property</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="real_estate_menu" name="Real Estate" sequence="10"/>
+        <menuitem id="property_menu" name="Properties" parent="real_estate_menu" action="action_property" sequence="1"/>
     </data>
 </odoo>
